@@ -114,3 +114,68 @@ function gameObject() {
         },
     };
 }
+
+function numPointsScored(playerName){
+  const homePlayer = gameObject().home.players[playerName]
+  const awayPlayer = gameObject().away.players[playerName]
+
+  if (homePlayer){
+    return homePlayer.points
+  }else if (awayPlayer){
+    return awayPlayer.points
+  }
+}
+
+function shoeSize(playerName){
+  const homePlayer = gameObject().home.players[playerName]
+  const awayPlayer = gameObject().away.players[playerName]
+
+  if(homePlayer){
+    return homePlayer.shoe
+  }else if(awayPlayer){
+    return awayPlayer.shoe
+  }
+}
+
+function teamColors(teamName){
+  const homeTeam = gameObject().home.teamName
+  const awayTeam = gameObject().away.teamName
+
+  if(homeTeam === teamName){
+    return gameObject().home.colors
+  }else if(awayTeam === teamName){
+    return gameObject().away.colors
+  }
+}
+
+function teamNames(){
+  const homeTeam = gameObject().home.teamName
+  const awayTeam = gameObject().away.teamName
+  const teamNames = [homeTeam, awayTeam]
+  return teamNames
+}
+
+function playerNumbers(teamName){
+  const game = gameObject()
+  let teamPlayers;
+
+  if(game.home.teamName === teamName){
+    teamPlayers = game.home.players;
+  }else if(game.away.teamName === teamName){
+    teamPlayers = game.away.players;
+  }
+   if (teamPlayers) {
+    const numbers = [];
+    for (const player in teamPlayers) {
+      numbers.push(teamPlayers[player].number);
+    }
+    return numbers;
+  }
+}
+
+// console.log(numPointsScored("Alan Anderson")) // 22
+// console.log(shoeSize("Reggie Evens")) // 14
+// console.log(teamColors("Brooklyn Nets")) // ["Black", "White"]
+// console.log(teamColors("Charlotte Hornets")) // ["Turquoise", "Purple"]
+// console.log(teamNames()) // ["Brooklyn Nets", "Charlotte Hornets"]
+// console.log(playerNumbers("Brooklyn Nets")) // [0, 30, 11, 1, 31]
